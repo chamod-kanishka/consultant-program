@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <br>
+      <a routerLink="/candidate" class="btn btn-primary">List Candidates</a>
+      <a style="margin-left:10px" routerLink="/add-candidate" class="btn btn-success">Add Candidates</a>
+      <br>
+    </div>
+  </div>
+
+<h2> Candidate Details</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="hidden">Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <!-- <th>Phone</th> -->
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees">
+            <td class="hidden">{{employee.id}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.age}}</td>
+            <!-- <td>{{employee.phone}}</td> -->
+            <td>
+                <a [routerLink]="['/update', employee.id]" class="btn btn-info">Update</a> &nbsp;
+                <button class="btn btn-danger" (click)="deleteEmployee(employee)"> Delete</button> &nbsp;
+                <a [routerLink]="['/add-payment', employee.id]" class="btn btn-warning" *ngIf="!employee.state">Register</a>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
