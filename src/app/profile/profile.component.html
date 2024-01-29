@@ -1,0 +1,10 @@
+<div class="profile-container">
+  <h2>{{user.roles}} Profile</h2>
+  <div class="user-details">
+    <p><strong>Username:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Role:</strong> {{ user.roles }}</p>
+    <!-- Add more user details as needed -->
+    <button (click)="logout()">Logout</button>
+  </div>
+</div>

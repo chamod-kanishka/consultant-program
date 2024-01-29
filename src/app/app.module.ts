@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
@@ -19,12 +21,16 @@ import { NavigationComponent } from './navigation/navigation.component';
 
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
   declarations: [
     NavigationComponent,
     LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
     AppComponent,
     EmployeeComponent,
     AddEmployeeComponent,
@@ -33,12 +39,13 @@ import { LoginService } from './login/login.service';
     AddPaymentComponent,
     UpdatePaymentComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-  ],
+    imports: [
+      BrowserModule,
+      AppRoutingModule,
+      HttpClientModule,
+      FormsModule,
+      ReactiveFormsModule
+    ],
   providers: [EmployeeService,PaymentService,LoginService],
   bootstrap: [AppComponent]
 })

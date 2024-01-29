@@ -9,17 +9,21 @@ import { PaymentComponent } from './payment/payment.component';
 import { AddPaymentComponent } from './payment/add-payment.component';
 import { UpdatePaymentComponent } from './payment/update-payment.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'candidate', component: EmployeeComponent },
   { path: 'add-candidate', component: AddEmployeeComponent },
   { path: 'update-candidate/:id', component: UpdateEmployeeComponent },
-  { path: '', redirectTo: '/candidate', pathMatch: 'full'},
   { path: 'payments', component: PaymentComponent },
   { path: 'add-payment/:id', component: AddPaymentComponent },
   { path: 'update-payment/:id', component: UpdatePaymentComponent },
   { path: 'login', component: LoginComponent},
-  { path: '', redirectTo: '/payments', pathMatch: 'full'}
+  { path: 'register', component: RegisterComponent},
+  { path: 'profile', component: ProfileComponent}
+
 ];
 
 @NgModule({

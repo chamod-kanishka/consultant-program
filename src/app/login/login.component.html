@@ -11,5 +11,8 @@
       <input type="password" id="password" name="password" [(ngModel)]="credentials.password" required>
   
       <button type="submit">Login</button>
+
+      <label>If you dont have account?</label>
+      <a routerLink="/registe" (click)="handleRegisterClick()">Register</a>
     </form>
 </div>

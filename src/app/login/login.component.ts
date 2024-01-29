@@ -1,6 +1,8 @@
 // login.component.ts
 import { Component } from '@angular/core';
 import { LoginService } from './login.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -10,19 +12,35 @@ import { LoginService } from './login.service';
 export class LoginComponent {
   credentials = { username: '', password: '' };
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService,public router: Router) {this.router=router}
+
+  ngOnInit() {
+    localStorage.clear(); 
+   }
 
   login() {
-    this.loginService.login(this.credentials).subscribe(
+    const options = { responseType: 'text' as 'json' }; // Explicitly set the response type to 'text'
+  
+    this.loginService.login(this.credentials, options).subscribe(
       (response) => {
-        // Handle successful login
+        // Assuming the response is the JWT token
+        const newToken = response;
+        // Clear the entire localStorage
+        localStorage.clear();
+
+        // Set the new token
+        localStorage.setItem('token', newToken);
+  
         console.log('Login successful', response);
-        // Store the token (you can use localStorage or a cookie)
-      },
+        this.router.navigate(['/profile'], { queryParams: { name: this.credentials.username } });      },
       (error) => {
-        // Handle login failure
         console.error('Login failed', error);
       }
     );
   }
+  
+  handleRegisterClick(): void {
+    this.router.navigate(['/register']);
+  }
+  
 }
